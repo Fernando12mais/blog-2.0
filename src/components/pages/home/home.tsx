@@ -25,13 +25,27 @@ export default () => {
   const example3 = [
     {
       keyword: "var",
-      return1: "mostra undefined no console",
-      return2: "mostra joão no console",
+      return1: "redeclara a variável teste criada anteriormente",
+      return2: "retorna fernando no console",
     },
     {
       keyword: "let",
-      return1: `mostra um erro no console "cannot access variable before initialization" ou seja      
-    "não é possível acessar a variável antes dela ser declarada" e para de executar o código.`,
+      return1: `cria uma variável que só pode ser acessada dentro da função fazAlgo`,
+      return2: "retorna 15 no console",
+    },
+  ];
+  const example4 = [
+    {
+      keyword: "const",
+      return1: `retorna um erro no console  "Uncaught TypeError: Assignment to constant variable.
+Para de executar o código."
+Significa que não podemos atribuir um novo valor a uma constante.
+Uma vez declarado o valor deve sempre se manter o mesmo;`,
+      return2: "",
+    },
+    {
+      keyword: "let",
+      return1: `a variável pode receber um novo valor`,
       return2: "",
     },
   ];
@@ -106,8 +120,59 @@ console.log(pessoa); ${example.return2 ? "//" : ""} ${example.return2} `}
       </div>
       <div className="flex gap-4">
         {example3.map((example) => (
-          <CodeBlock text={`teste`} />
+          <CodeBlock
+            text={`${example.keyword} teste = 15;
+console.log(teste) // retorna 15 no console
+function fazAlgo (){
+  ${example.keyword} teste = "fernando";
+  // ${example.return1};
+}  
+fazAlgo() // executa a função
+console.log(teste) // ${example.return2}
+`}
+          />
         ))}
+      </div>
+      <div className="w-1/2">
+        <Paragraph>
+          <>
+            Como vimos no exemplo acima, <Keyword>var</Keyword> cria uma
+            variável de escopo global, que altera o valor criado anteriormente
+            independente do escopo, então fica muito perigoso usar
+            <Keyword>var</Keyword>, numa aplicação com 1000 linhas de código
+            fica muito fácil acabar repetindo um nome de variável e redeclarando
+            ela por acidente,causando muitos bugs. mais um motivo pra se usar
+            <Keyword>let</Keyword> ao invés de
+            <Keyword>var</Keyword> .
+          </>
+        </Paragraph>
+
+        <Subtitle>
+          <>
+            A seguir vemos a diferença entre <Keyword>const</Keyword> e
+            <Keyword>let</Keyword>:
+          </>
+        </Subtitle>
+      </div>
+      <div className="flex gap-4">
+        {example4.map((example) => (
+          <CodeBlock
+            text={`${example.keyword} teste = 15;
+teste="fer";
+/*${example.return1}*/
+`}
+          />
+        ))}
+      </div>
+      <div className="w-1/2">
+        <Paragraph>
+          <>
+            Por enquanto é isso que tenho pra mostrar sobre
+            <Keyword>const</Keyword>,<Keyword>let</Keyword> e
+            <Keyword>var</Keyword>, espero ter contribuido para que você leitor
+            tenha um melhor entendimento sobre variáveis em Javascript
+          </>
+        </Paragraph>
       </div>
     </section>
   );
