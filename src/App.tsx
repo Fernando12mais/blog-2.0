@@ -8,7 +8,6 @@ function App() {
       <Header />
       <div className="bg-slate-600 p-8 shadow-[inset_0_0_45px_-15px_rgba(3,188,300,1)]">
         <Routes />
-        teste
       </div>
     </Router>
   );
