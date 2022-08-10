@@ -1,4 +1,4 @@
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, tomorrowNightBright } from "react-code-blocks";
 
 type TCopyBlock = {
   text: string;
@@ -12,6 +12,6 @@ export default ({ text }: TCopyBlock) => (
     language={"javascript"}
     showLineNumbers
     wrapLines
-    theme={dracula}
+    theme={tomorrowNightBright}
   />
 );
