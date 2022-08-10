@@ -50,7 +50,7 @@ Uma vez declarado o valor deve sempre se manter o mesmo;`,
     },
   ];
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col gap-2 bg-[#2E2B2B] p-8 shadow-[inset_0_0_45px_-15px_rgba(3,188,300,1)]">
       <div className="w-1/2">
         <Title>Como declarar uma variável em JS?</Title>
         <Paragraph>
