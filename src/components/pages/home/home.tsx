@@ -16,7 +16,7 @@ export default () => {
   return (
     <div className="flex flex-col gap-8 bg-[#2E2B2B] ">
       <img
-        className="w-full h-[400px]"
+        className="w-full h-[300px]"
         src={
           "https://free4kwallpapers.com/uploads/originals/2021/02/04/future-tech-city-wallpaper.jpg"
         }
