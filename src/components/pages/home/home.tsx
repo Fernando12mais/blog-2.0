@@ -1,179 +1,44 @@
-import { CodeBlock, Keyword, Paragraph, Subtitle, Title } from "../../atoms";
+import fotoFer from "../../../assets/FotoPerfilFernando.jpg";
+import html5 from "../../../assets/html5.png";
+import css3 from "../../../assets/css3.png";
+import js from "../../../assets/js.png";
+import { Button, Title } from "../../atoms";
 
-export default () => {
-  const example1 = [
-    {
-      keyword: "var",
-    },
-    { keyword: "let" },
-    { keyword: "const" },
-  ];
+const dataContainers = [
+  { img: html5, title: "HTML5" },
+  { img: css3, title: "CSS3" },
+  { img: js, title: "JAVASCRIPT" },
+];
 
-  const example2 = [
-    {
-      keyword: "var",
-      return1: "mostra undefined no console",
-      return2: "mostra joão no console",
-    },
-    {
-      keyword: "let",
-      return1: `mostra um erro no console "cannot access variable before initialization" ou seja      
-      "não é possível acessar a variável antes dela ser declarada" e para de executar o código.`,
-      return2: "",
-    },
-  ];
-  const example3 = [
-    {
-      keyword: "var",
-      return1: "redeclara a variável teste criada anteriormente",
-      return2: "retorna fernando no console",
-    },
-    {
-      keyword: "let",
-      return1: `cria uma variável que só pode ser acessada dentro da função fazAlgo`,
-      return2: "retorna 15 no console",
-    },
-  ];
-  const example4 = [
-    {
-      keyword: "const",
-      return1: `retorna um erro no console  "Uncaught TypeError: Assignment to constant variable.
-Para de executar o código."
-Significa que não podemos atribuir um novo valor a uma constante.
-Uma vez declarado o valor deve sempre se manter o mesmo;`,
-      return2: "",
-    },
-    {
-      keyword: "let",
-      return1: `a variável pode receber um novo valor`,
-      return2: "",
-    },
-  ];
-  return (
-    <section className="flex flex-col gap-2">
-      <div className="w-1/2">
-        <Title>Como declarar uma variável em JS?</Title>
-        <Paragraph>
-          <>
-            Para declarar uma variável usamos as palavras-chave
-            <Keyword>var</Keyword>,<Keyword>let</Keyword> ou
-            <Keyword>const</Keyword>. As diferenças entre cada uma serão
-            abordadas no próximo tópico.
-          </>
-        </Paragraph>
-
-        <Subtitle>
-          <>
-            Exemplo com as palavras-chave :<Keyword>var</Keyword>,
-            <Keyword>let</Keyword> e <Keyword>const </Keyword> respectivamente:
-          </>
-        </Subtitle>
+export default () => (
+  <div className="flex flex-col gap-8 bg-[#2E2B2B] ">
+    <img
+      className="w-full h-[400px]"
+      src={
+        "https://free4kwallpapers.com/uploads/originals/2021/02/04/future-tech-city-wallpaper.jpg"
+      }
+    />
+    <div className="flex items-center justify-center px-8 gap-8 justify-center h-[200px] w-full">
+      <img className="h-full rounded-md" src={fotoFer} />
+      <div className="flex flex-col gap-4">
+        <Title>APRENDA HTML, CSS E JAVASCRIPT COMIGO!!!</Title>
+        <Title>
+          Vou ensinar passo a passo de cada uma dessas linguagens. Selecione
+          abaixo às aulas.
+        </Title>
       </div>
-      <div className="flex gap-4">
-        {example1.map((example, index) => (
-          <CodeBlock
-            key={index}
-            text={`${example.keyword} teste = "fernando";
-console.log(teste)       // mostra fernando no console`}
-          />
-        ))}
-      </div>
-      <div className="w-1/2">
-        <Title>var, let ou const, qual usar?</Title>
-        <Paragraph>
-          <>
-            Cada palavra-chave tem sua peculiaridade, com a chegada do ES6 que
-            trouxe as novas formas <Keyword>let</Keyword> e
-            <Keyword>const</Keyword>, se tornou melhor usar apenas
-            <Keyword>let</Keyword> e<Keyword>const</Keyword>. <br /> A seguir
-            vamos entender as diferenças entre as formas de se declarar uma
-            variável e porque usar uma ou outra em alguns cenários.
-          </>
-        </Paragraph>
-        <Subtitle>
-          <>
-            Abaixo vemos um exemplo de :<Keyword>var</Keyword> vs
-            <Keyword>let</Keyword>
-          </>
-        </Subtitle>
-      </div>
-      <div className="flex gap-4">
-        {example2.map((example, index) => (
-          <CodeBlock
-            key={index}
-            text={`console.log(pessoa); /* ${example.return1} */    
-${example.keyword} pessoa = "joão";
-console.log(pessoa); ${example.return2 ? "//" : ""} ${example.return2} `}
-          />
-        ))}
-      </div>
-      <div className="w-1/2">
-        <Paragraph>
-          <>
-            Ao usar <Keyword>var</Keyword> o debugging da aplicação fica muito
-            mais difícil pois nenhum erro é retornado mesmo se você escreveu o
-            nome da variável errado, já com let você recebe o erro e só consegue
-            acessar variáveis que existem.
-          </>
-        </Paragraph>
-        <Subtitle>Mais exemplos :</Subtitle>
-      </div>
-      <div className="flex gap-4">
-        {example3.map((example) => (
-          <CodeBlock
-            text={`${example.keyword} teste = 15;
-console.log(teste) // retorna 15 no console
-function fazAlgo (){
-  ${example.keyword} teste = "fernando";
-  // ${example.return1};
-}  
-fazAlgo() // executa a função
-console.log(teste) // ${example.return2}
-`}
-          />
-        ))}
-      </div>
-      <div className="w-1/2">
-        <Paragraph>
-          <>
-            Como vimos no exemplo acima, <Keyword>var</Keyword> cria uma
-            variável de escopo global, que altera o valor criado anteriormente
-            independente do escopo, então fica muito perigoso usar
-            <Keyword>var</Keyword>, numa aplicação com 1000 linhas de código
-            fica muito fácil acabar repetindo um nome de variável e redeclarando
-            ela por acidente,causando muitos bugs. mais um motivo pra se usar
-            <Keyword>let</Keyword> ao invés de
-            <Keyword>var</Keyword> .
-          </>
-        </Paragraph>
-
-        <Subtitle>
-          <>
-            A seguir vemos a diferença entre <Keyword>const</Keyword> e
-            <Keyword>let</Keyword>:
-          </>
-        </Subtitle>
-      </div>
-      <div className="flex gap-4">
-        {example4.map((example) => (
-          <CodeBlock
-            text={`${example.keyword} teste = 15;
-teste="fer";
-/*${example.return1}*/
-`}
-          />
-        ))}
-      </div>
-      <div className="w-1/2">
-        <Paragraph>
-          <>
-            Por enquanto é isso que tenho pra mostrar sobre
-            <Keyword>const</Keyword>,<Keyword>let</Keyword> e
-            <Keyword>var</Keyword>, espero ter contribuido para que você leitor
-            tenha um melhor entendimento sobre variáveis em Javascript
-          </>
-        </Paragraph>
-      </div>
-    </section>
-  );
-};
+    </div>
+    <div className="flex justify-center items-center gap-24 bg-gradient-to-b from-[#814dc9] to-[#000000] h-[600px] w-full">
+      {dataContainers.map((container, index) => (
+        <div
+          className="flex flex-col gap-4 justify-center items-center w-2/12 bg-white h-3/6 rounded-3xl shadow-[28px_4px_30px_#00000040]"
+          key={index}
+        >
+          <img className="w-24 h-24" src={container.img} />
+          <p className="text-2xl text-black">{container.title}</p>
+          <Button onClick={() => {}}>Acessar Conteúdo</Button>
+        </div>
+      ))}
+    </div>
+  </div>
+);
