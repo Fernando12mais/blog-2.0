@@ -31,7 +31,7 @@ export default () => {
           </Title>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-24 bg-gradient-to-b from-[#36ACFE] to-[#000000] h-[600px] w-full">
+      <div className="flex justify-center items-center gap-24 bg-gradient-to-b from-[#814dc9] to-[#000000] h-[600px] w-full">
         {dataContainers.map((container, index) => (
           <div
             className="flex flex-col gap-4 justify-center items-center w-2/12 bg-white h-3/6 rounded-3xl shadow-[28px_4px_30px_#00000040]"
