@@ -6,8 +6,7 @@ type TCopyBlock = {
 
 export default ({ text }: TCopyBlock) => (
   <CopyBlock
-    customStyle={{ width: "fit-content" }}
-    codeBlock
+    customStyle={{ width: "100%", padding: "16px", fontSize: "inherit" }}
     text={text}
     language={"javascript"}
     showLineNumbers
