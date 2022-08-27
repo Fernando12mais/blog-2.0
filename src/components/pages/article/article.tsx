@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { CodeBlock, Keyword, Paragraph, Subtitle, Title } from "../../atoms";
 
 export default () => {
@@ -49,101 +50,112 @@ Uma vez declarado o valor deve sempre se manter o mesmo;`,
       return2: "",
     },
   ];
+  const ContainerCodeBlock = ({ children }: { children: ReactNode }) => (
+    <div className="w-full flex flex-col gap-4 md:flex-row lg:text-lg xl:text-xl">
+      {children}
+    </div>
+  );
+  const ContainerText = ({ children }: { children: ReactNode }) => (
+    <div className="flex flex-col gap-4 md:px-8 lg:w-3/4">{children}</div>
+  );
   return (
-    <section className="flex flex-col gap-2 bg-[#2E2B2B] p-8 shadow-[inset_0_0_45px_-15px_rgba(3,188,300,1)]">
-      <div className="w-1/2">
+    <section className=" flex flex-col gap-8 p-4 px-2 bg-[#2E2B2B] lg:shadow-[inset_0_0_45px_-15px_rgba(3,188,300,1)]">
+      <ContainerText>
         <Title>Como declarar uma variável em JS?</Title>
         <Paragraph>
           <>
             Para declarar uma variável usamos as palavras-chave
-            <Keyword>var</Keyword>,<Keyword>let</Keyword> ou
-            <Keyword>const</Keyword>. As diferenças entre cada uma serão
+            <Keyword>var</Keyword>,<Keyword>let</Keyword>ou
+            <Keyword>const</Keyword>.As diferenças entre cada uma serão
             abordadas no próximo tópico.
           </>
         </Paragraph>
 
         <Subtitle>
           <>
-            Exemplo com as palavras-chave :<Keyword>var</Keyword>,
-            <Keyword>let</Keyword> e <Keyword>const </Keyword> respectivamente:
+            Exemplo com as palavras-chave:<Keyword>var</Keyword>,
+            <Keyword>let</Keyword>e<Keyword>const</Keyword>respectivamente:
           </>
         </Subtitle>
-      </div>
-      <div className="flex gap-4">
+      </ContainerText>
+      <ContainerCodeBlock>
         {example1.map((example, index) => (
           <CodeBlock
             key={index}
             text={`${example.keyword} teste = "fernando";
-console.log(teste)       // mostra fernando no console`}
+console.log(teste);
+// mostra fernando no console`}
           />
         ))}
-      </div>
-      <div className="w-1/2">
+      </ContainerCodeBlock>
+      <ContainerText>
         <Title>Var, let ou const, qual usar?</Title>
         <Paragraph>
           <>
             Cada palavra-chave tem sua peculiaridade, com a chegada do ES6 que
-            trouxe as novas formas <Keyword>let</Keyword> e
-            <Keyword>const</Keyword>, se tornou melhor usar apenas
-            <Keyword>let</Keyword> e<Keyword>const</Keyword>. <br /> A seguir
+            trouxe as novas formas<Keyword>let</Keyword>e
+            <Keyword>const</Keyword>,se tornou melhor usar apenas
+            <Keyword>let</Keyword> e<Keyword>const</Keyword>.<br />A seguir
             vamos entender as diferenças entre as formas de se declarar uma
             variável e porque usar uma ou outra em alguns cenários.
           </>
         </Paragraph>
         <Subtitle>
           <>
-            Abaixo vemos um exemplo de :<Keyword>var</Keyword> vs
+            Abaixo vemos um exemplo de :<Keyword>var</Keyword>vs
             <Keyword>let</Keyword>
           </>
         </Subtitle>
-      </div>
-      <div className="flex gap-4">
+      </ContainerText>
+      <ContainerCodeBlock>
         {example2.map((example, index) => (
           <CodeBlock
             key={index}
-            text={`console.log(pessoa); /* ${example.return1} */    
+            text={`console.log(pessoa);
+/* ${example.return1} */    
 ${example.keyword} pessoa = "joão";
-console.log(pessoa); ${example.return2 ? "//" : ""} ${example.return2} `}
+console.log(pessoa);
+${example.return2 ? "//" : ""} ${example.return2} `}
           />
         ))}
-      </div>
-      <div className="w-1/2">
+      </ContainerCodeBlock>
+      <ContainerText>
         <Paragraph>
           <>
-            Ao usar <Keyword>var</Keyword> o debugging da aplicação fica muito
+            Ao usar <Keyword>var</Keyword>o debugging da aplicação fica muito
             mais difícil pois nenhum erro é retornado mesmo se você escreveu o
             nome da variável errado, já com let você recebe o erro e só consegue
             acessar variáveis que existem.
           </>
         </Paragraph>
         <Subtitle>Mais exemplos :</Subtitle>
-      </div>
-      <div className="flex gap-4">
+      </ContainerText>
+      <ContainerCodeBlock>
         {example3.map((example) => (
           <CodeBlock
             text={`${example.keyword} teste = 15;
 console.log(teste) // retorna 15 no console
 function fazAlgo (){
-  ${example.keyword} teste = "fernando";
-  // ${example.return1};
+${example.keyword} teste = "fernando";
+// ${example.return1};
 }  
 fazAlgo() // executa a função
 console.log(teste) // ${example.return2}
 `}
           />
         ))}
-      </div>
-      <div className="w-1/2">
+      </ContainerCodeBlock>
+      <ContainerText>
         <Paragraph>
           <>
-            Como vimos no exemplo acima, <Keyword>var</Keyword> cria uma
-            variável de escopo global, que altera o valor criado anteriormente
+            Como vimos no exemplo acima,<Keyword>var</Keyword>cria uma variável
+            de escopo global, que altera o valor criado anteriormente
             independente do escopo, então fica muito perigoso usar
             <Keyword>var</Keyword>, numa aplicação com 1000 linhas de código
             fica muito fácil acabar repetindo um nome de variável e redeclarando
             ela por acidente,causando muitos bugs. mais um motivo pra se usar
-            <Keyword>let</Keyword> ao invés de
-            <Keyword>var</Keyword> .
+            <Keyword>let</Keyword>ao invés de
+            <Keyword>var</Keyword>.
           </>
         </Paragraph>
 
@@ -153,18 +165,17 @@ console.log(teste) // ${example.return2}
             <Keyword>let</Keyword>:
           </>
         </Subtitle>
-      </div>
-      <div className="flex gap-4">
+      </ContainerText>
+      <ContainerCodeBlock>
         {example4.map((example) => (
           <CodeBlock
             text={`${example.keyword} teste = 15;
 teste="fer";
-/*${example.return1}*/
-`}
+/*${example.return1}*/`}
           />
         ))}
-      </div>
-      <div className="w-1/2">
+      </ContainerCodeBlock>
+      <ContainerText>
         <Paragraph>
           <>
             Por enquanto é isso que tenho pra mostrar sobre
@@ -173,7 +184,7 @@ teste="fer";
             tenha um melhor entendimento sobre variáveis em Javascript
           </>
         </Paragraph>
-      </div>
+      </ContainerText>
     </section>
   );
 };

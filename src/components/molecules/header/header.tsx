@@ -4,16 +4,19 @@ import { Button } from "../../atoms";
 export default () => {
   const navigate = useNavigate();
   return (
-    <nav className="bg-slate-200 text-white p-3 flex justify-between items-center">
+    <nav className="text-center text-xl flex justify-between items-center p-2 gap-1 bg-slate-200">
       <a
-        className="text-3xl tracking-widest no-underline uppercase cursor-pointer text-black"
+        className="text-sm uppercase  tracking-widest sm:text-lg lg:text-3xl"
         onClick={() => navigate("/")}
       >
         Learn-JS-with-Fer
       </a>
+
       <div className="flex gap-4">
         <Button onClick={() => navigate("/fer-profile")}>Conheça o Fer</Button>
-        <Button onClick={() => navigate("/login")}>Admin</Button>
+        <Button className="hidden xl:block" onClick={() => navigate("/login")}>
+          Admin
+        </Button>
       </div>
     </nav>
   );
